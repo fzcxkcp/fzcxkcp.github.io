@@ -6,23 +6,23 @@
   <title>datacore-HomePage | Obsidian-User</title>
   <meta
     name="description"
-    content="datacore-HomePage 组件介绍页，围绕真实模块与首页组织能力进行展示。"
+    content="datacore-HomePage 介绍页，快速了解这张首页能做什么。"
   />
   <style>
     :root {
       color-scheme: dark;
-      --bg: #0a0d12;
-      --bg-soft: #121720;
-      --surface: rgba(18, 24, 33, 0.78);
-      --surface-strong: rgba(23, 31, 42, 0.94);
-      --surface-faint: rgba(28, 36, 48, 0.54);
-      --line: rgba(231, 224, 203, 0.14);
-      --line-strong: rgba(231, 224, 203, 0.28);
-      --text-main: #f3ecdc;
-      --text-sub: rgba(243, 236, 220, 0.76);
-      --text-soft: rgba(243, 236, 220, 0.52);
-      --accent: #d2b67c;
-      --accent-soft: rgba(210, 182, 124, 0.18);
+      --bg: #0f172a;
+      --bg-soft: #0b1220;
+      --surface: rgba(30, 41, 59, 0.82);
+      --surface-strong: rgba(30, 41, 59, 0.94);
+      --surface-faint: rgba(51, 65, 85, 0.54);
+      --line: rgba(148, 163, 184, 0.14);
+      --line-strong: rgba(148, 163, 184, 0.28);
+      --text-main: #f8fafc;
+      --text-sub: rgba(226, 232, 240, 0.76);
+      --text-soft: rgba(226, 232, 240, 0.52);
+      --accent: #bfdbfe;
+      --accent-soft: rgba(59, 130, 246, 0.12);
       --shadow: 0 36px 90px rgba(0, 0, 0, 0.42);
       --radius-xl: 30px;
       --radius-lg: 22px;
@@ -40,9 +40,9 @@
       margin: 0;
       min-height: 100%;
       background:
-        radial-gradient(circle at top, rgba(210, 182, 124, 0.14), transparent 30%),
-        radial-gradient(circle at 15% 20%, rgba(135, 156, 188, 0.12), transparent 24%),
-        linear-gradient(180deg, #0a0d12 0%, #0d1219 44%, #090c10 100%);
+        radial-gradient(circle at top, rgba(59, 130, 246, 0.08), transparent 30%),
+        radial-gradient(circle at 15% 20%, rgba(59, 130, 246, 0.08), transparent 24%),
+        linear-gradient(180deg, #0f172a 0%, #0b1220 100%);
       color: var(--text-main);
       font-family: "Noto Serif SC", "Source Han Serif SC", "Microsoft YaHei", serif;
     }
@@ -100,13 +100,12 @@
       display: grid;
       place-items: center;
       background:
-        linear-gradient(145deg, rgba(243, 236, 220, 0.12), rgba(243, 236, 220, 0.04)),
-        rgba(18, 24, 33, 0.8);
+        linear-gradient(145deg, #f8fafc, #dbe4f3);
       border: 1px solid var(--line);
       box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
       font-size: 20px;
       font-weight: 700;
-      color: var(--accent);
+      color: #3b82f6;
     }
 
     .brand-copy h1 {
@@ -119,7 +118,7 @@
     .brand-copy p {
       margin: 6px 0 0;
       color: var(--text-sub);
-      font-size: 14px;
+      font-size: 15px;
       letter-spacing: 0.02em;
     }
 
@@ -192,17 +191,17 @@
 
     .hero-panel h2 {
       margin: 0;
-      font-size: clamp(30px, 4vw, 52px);
-      line-height: 1.04;
+      font-size: clamp(34px, 4.6vw, 58px);
+      line-height: 1.08;
       letter-spacing: -0.035em;
     }
 
     .hero-panel p {
       margin: 18px 0 0;
       color: var(--text-sub);
-      font-size: 16px;
-      line-height: 1.86;
-      max-width: 62ch;
+      font-size: 17px;
+      line-height: 1.9;
+      max-width: 34em;
     }
 
     .hero-notes {
@@ -216,7 +215,7 @@
       padding: 10px 14px;
       border-radius: 999px;
       border: 1px solid var(--line);
-      background: rgba(243, 236, 220, 0.04);
+      background: rgba(148, 163, 184, 0.08);
       color: var(--text-sub);
       font-size: 13px;
     }
@@ -263,7 +262,7 @@
       gap: 12px;
       align-items: start;
       padding: 14px 0;
-      border-top: 1px solid rgba(243, 236, 220, 0.08);
+      border-top: 1px solid rgba(148, 163, 184, 0.08);
     }
 
     .metric-item:first-child {
@@ -298,7 +297,7 @@
       border: 1px solid var(--line);
       background:
         linear-gradient(180deg, rgba(255, 255, 255, 0.018), transparent 22%),
-        rgba(10, 14, 20, 0.84);
+        rgba(15, 23, 42, 0.84);
       box-shadow: var(--shadow);
       overflow: hidden;
     }
@@ -314,16 +313,17 @@
     .carousel-title strong {
       display: block;
       margin-top: 8px;
-      font-size: clamp(26px, 3.6vw, 38px);
+      font-size: clamp(28px, 3.8vw, 42px);
       letter-spacing: -0.03em;
+      line-height: 1.18;
     }
 
     .carousel-title p {
       margin: 10px 0 0;
       color: var(--text-sub);
-      font-size: 15px;
-      line-height: 1.8;
-      max-width: 58ch;
+      font-size: 16px;
+      line-height: 1.84;
+      max-width: 42em;
     }
 
     .carousel-meta {
@@ -347,7 +347,7 @@
       margin: 0 auto;
       padding: 30px 30px 28px;
       border-radius: 28px;
-      border: 1px solid rgba(243, 236, 220, 0.12);
+      border: 1px solid rgba(148, 163, 184, 0.14);
       background:
         linear-gradient(180deg, rgba(255, 255, 255, 0.03), transparent 24%),
         var(--surface-strong);
@@ -369,7 +369,7 @@
       position: absolute;
       inset: auto 28px 0;
       height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(243, 236, 220, 0.16), transparent);
+      background: linear-gradient(90deg, transparent, rgba(148, 163, 184, 0.16), transparent);
     }
 
     .deck-card.is-active {
@@ -428,7 +428,7 @@
       padding: 8px 12px;
       border-radius: 999px;
       border: 1px solid var(--line);
-      background: rgba(243, 236, 220, 0.04);
+      background: rgba(148, 163, 184, 0.08);
       color: var(--accent);
       font-size: 12px;
       letter-spacing: 0.12em;
@@ -444,17 +444,17 @@
 
     .card-main h4 {
       margin: 0;
-      font-size: clamp(26px, 3.4vw, 38px);
+      font-size: clamp(28px, 3.4vw, 40px);
       letter-spacing: -0.035em;
-      line-height: 1.08;
+      line-height: 1.14;
     }
 
     .card-main p {
       margin: 14px 0 0;
       color: var(--text-sub);
-      font-size: 16px;
-      line-height: 1.82;
-      max-width: 54ch;
+      font-size: 17px;
+      line-height: 1.86;
+      max-width: 36em;
     }
 
     .card-grid {
@@ -468,8 +468,8 @@
     .card-list,
     .card-meta-box {
       border-radius: 22px;
-      border: 1px solid rgba(243, 236, 220, 0.1);
-      background: rgba(243, 236, 220, 0.035);
+      border: 1px solid rgba(148, 163, 184, 0.12);
+      background: rgba(148, 163, 184, 0.06);
       padding: 20px 20px 18px;
       min-height: 100%;
     }
@@ -496,7 +496,7 @@
       position: relative;
       padding-left: 18px;
       color: var(--text-sub);
-      line-height: 1.72;
+      line-height: 1.8;
       font-size: 15px;
     }
 
@@ -509,7 +509,7 @@
       height: 7px;
       border-radius: 999px;
       background: var(--accent);
-      box-shadow: 0 0 0 6px rgba(210, 182, 124, 0.08);
+      box-shadow: 0 0 0 6px rgba(59, 130, 246, 0.12);
     }
 
     .meta-chips {
@@ -522,8 +522,8 @@
     .meta-chip {
       padding: 8px 12px;
       border-radius: 999px;
-      background: rgba(210, 182, 124, 0.08);
-      border: 1px solid rgba(210, 182, 124, 0.16);
+      background: rgba(59, 130, 246, 0.12);
+      border: 1px solid rgba(147, 197, 253, 0.18);
       color: var(--text-main);
       font-size: 13px;
       line-height: 1.4;
@@ -532,8 +532,8 @@
     .meta-summary {
       margin: 0;
       color: var(--text-sub);
-      font-size: 14px;
-      line-height: 1.8;
+      font-size: 15px;
+      line-height: 1.86;
     }
 
     .deck-controls {
@@ -555,7 +555,7 @@
       height: 46px;
       border-radius: 999px;
       border: 1px solid var(--line);
-      background: rgba(243, 236, 220, 0.04);
+      background: rgba(148, 163, 184, 0.08);
       color: var(--text-main);
       cursor: pointer;
       transition: transform var(--transition), border-color var(--transition), background var(--transition);
@@ -564,7 +564,7 @@
     .deck-button:hover {
       transform: translateY(-1px);
       border-color: var(--line-strong);
-      background: rgba(243, 236, 220, 0.08);
+      background: rgba(148, 163, 184, 0.12);
     }
 
     .deck-button:disabled {
@@ -587,14 +587,14 @@
       border: 0;
       padding: 0;
       border-radius: 999px;
-      background: rgba(243, 236, 220, 0.12);
+      background: rgba(148, 163, 184, 0.16);
       cursor: pointer;
       transition: width var(--transition), background var(--transition), transform var(--transition);
     }
 
     .deck-dot.is-active {
       width: 62px;
-      background: linear-gradient(90deg, var(--accent), #f0dec0);
+      background: linear-gradient(90deg, #93c5fd, #dbeafe);
       transform: translateY(-1px);
     }
 
@@ -727,7 +727,7 @@
         <div class="brand-badge">DC</div>
         <div class="brand-copy">
           <h1>datacore-HomePage</h1>
-          <p>围绕真实组件组织的首页系统，而不是单个静态面板。</p>
+          <p>给第一次点进来的人，一眼看懂这张首页为什么会让人想留下来。</p>
         </div>
       </div>
       <div class="topbar-actions">
@@ -738,44 +738,43 @@
 
     <section class="hero">
       <article class="hero-panel">
-        <div class="eyebrow">Component System</div>
-        <h2>它不是一块首页皮肤，而是一套可以拖拽、筛选、嵌入、组合的 Datacore 工作面。</h2>
+        <div class="eyebrow">Welcome</div>
+        <h2>把常用入口、正在看的内容和今天的节奏，收在同一页里。</h2>
         <p>
-          `datacore-home` 现在已经形成了以浏览、搜索、动作入口、时间节律、内容承载、个人面板为主轴的首页系统。
-          重点不在“把信息摆上去”，而在于让首页具备检索、切换、筛选、排序与继续打开笔记的能力。
+          它更像你每天都会回来的桌面。能找东西，能继续昨天，也能把今天最重要的内容留在眼前。
         </p>
         <div class="hero-notes">
-          <span class="hero-note">真实模块来自 `HomePage-core.md`</span>
-          <span class="hero-note">支持画布排布、缩放、自动保存</span>
-          <span class="hero-note">组件之间不是孤立展示</span>
+          <span class="hero-note">搜索、浏览、时间与动作入口都在同一页</span>
+          <span class="hero-note">重点内容可以留下，不必每次重新翻找</span>
+          <span class="hero-note">越用越像自己的桌面，而不是固定模板</span>
         </div>
       </article>
 
       <aside class="metric-panel">
         <div class="metric-head">
-          <h3>Quick Read</h3>
-          <span>Live Modules</span>
+          <h3>一眼看完</h3>
+          <span>Datacore Home</span>
         </div>
         <div class="metrics">
           <div class="metric-item">
             <div class="metric-value">10</div>
             <div class="metric-copy">
-              <strong>核心组件</strong>
-              <p>`img`、`sticky`、`search`、`browser`、`actions`、`embed`、`datetime`、`countdown`、`checkin`、`profile` 全部已经接入首页核心。</p>
+              <strong>常用能力</strong>
+              <p>搜索、浏览、功能入口、嵌入、日期时间、倒计时、打卡、主面板等能力，都已经能在这一页里配合起来。</p>
             </div>
           </div>
           <div class="metric-item">
             <div class="metric-value">4</div>
             <div class="metric-copy">
-              <strong>浏览源类型</strong>
-              <p>`marks / notes / media / other` 四类源统一挂在浏览组件下，按不同模式展示与排序。</p>
+              <strong>浏览入口</strong>
+              <p>标记、笔记、媒体和其他文件都能被重新整理成卡片，不会只剩下冷冰冰的文件列表。</p>
             </div>
           </div>
           <div class="metric-item">
             <div class="metric-value">8</div>
             <div class="metric-copy">
-              <strong>搜索推荐数</strong>
-              <p>搜索栏默认只展示前 8 项推荐，保持与按钮显示数量一致，避免下拉推荐过多造成卡顿。</p>
+              <strong>即显推荐</strong>
+              <p>搜索建议默认只给你最该先看的 8 条，够快，也不会一下子把页面拖得很重。</p>
             </div>
           </div>
         </div>
@@ -785,11 +784,11 @@
     <section class="carousel-shell" aria-labelledby="deck-title">
       <div class="carousel-head">
         <div class="carousel-title">
-          <h3 id="deck-title">Module Guide</h3>
-          <strong>按组件簇轮询查看，而不是一次性把所有说明摊开。</strong>
-          <p>中间是当前主卡，左右半露的是前后卡。你可以点左右卡切换，也可以用按钮或下方进度条跳转。</p>
+          <h3 id="deck-title">翻页导览</h3>
+          <strong>一张卡片，只说一个组件。</strong>
+          <p>从背景到按钮、从搜索到打卡，翻一遍就能知道这页主要能做什么。</p>
         </div>
-        <div class="carousel-meta">自动轮换 5.8 秒，悬停暂停</div>
+        <div class="carousel-meta">自动轮换 5.8 秒，悬停时停住</div>
       </div>
 
       <div class="deck" id="deck" aria-live="polite"></div>
@@ -801,90 +800,169 @@
         </div>
         <div class="deck-progress" id="deckDots" aria-label="卡片导航"></div>
       </div>
-      <div class="deck-hint">侧边露出的卡片本身也可点击切换。</div>
+      <div class="deck-hint">左右半露的卡片也可以直接点。</div>
     </section>
 
     <footer class="footer">
-      <div>页面内容依据 `datacore-home/scripts/HomePage-core.md` 与现有组件模块整理。</div>
-      <div>如果继续扩展组件，这里只需要补充卡片数据，不必重做页面结构。</div>
+      <div>这里说的是使用时最容易感知到的部分，真正上手后，组合方式会比这页展示得更自由。</div>
+      <div>如果你习惯把首页当作工作台，这页会比单纯的封面更有存在感。</div>
     </footer>
   </main>
 
   <script>
     const cards = [
       {
-        section: "Browser",
-        title: "浏览组件负责把零散内容变成可继续操作的卡片流",
+        section: "氛围",
+        title: "首页背景",
         description:
-          "它不只是列出文件，而是把高亮、段落、普通笔记、媒体与其它文件都收束进同一套浏览逻辑，再给你排序、筛选和路径时间信息。",
-        chips: ["4 类源类型", "支持路径 / 时间", "日记识别默认关闭"],
+          "决定这页第一眼的气氛。",
+        chips: ["渐变 / 图片 / 视频", "可接音频", "让整页更统一"],
         summary:
-          "浏览组件目前最像首页的检索中枢。你不是进入列表页才筛东西，而是在首页就能直接继续打开、快速查看、按规则抽取内容。",
+          "先把整页收拢在一起。",
         list: [
-          "支持 `marks / notes / media / other` 四个源类型，每组可独立启用、排序、分页和控制卡片尺寸。",
-          "高亮抽取支持 `==`、自定义颜色规则、正则规则和 diary 规则；`diary` 默认不启用，但会识别 `YYYY-MM-DD` 文件名与行首时间。",
-          "日记条目如果带 `- 05:02` 或 `- 05:02:30` 前缀，会直接用文件日期加时间作为创建与修改排序依据。",
-          "卡片能显示路径和时间，时间侧已经支持显示秒，适合你现在强调的精确排序与追溯。"
+          "支持渐变、图片、视频等背景形式。",
+          "音频与视频可循环，也能截取片段播放。",
+          "能把整页视觉和组件气质统一起来。"
         ]
       },
       {
-        section: "Search + Actions",
-        title: "搜索入口与功能按钮负责把首页变成操作面板",
+        section: "归属",
+        title: "主面板",
         description:
-          "搜索组件解决的是‘怎么进’，功能按钮解决的是‘进来之后第一步做什么’。这两块在首页上承担的是动作入口，而不是展示装饰。",
-        chips: ["推荐上限 8", "横向 / 纵向 / 图标布局", "毛玻璃与半透明背景可调"],
+          "让首页一打开就有归属感。",
+        chips: ["头像与昵称", "简介与标签", "适合做开场"],
         summary:
-          "搜索与动作入口是一组组合拳。一个负责定位笔记与最近内容，一个负责常用命令、链接和主页动作的快速触发。",
+          "先看到人，再看到功能。",
         list: [
-          "搜索栏聚焦时只显示前 8 项推荐，数量刚好贴合当前可见按钮，避免一展开就堆很多条导致性能下降。",
-          "支持输入框、最近文件列表、下拉式与独立显示切换，最近项数量与标题显示都能单独控制。",
-          "功能按钮已经拆出多种布局：纵向列表、横向列表、纵向图标，并继续兼容头像、昵称、简介和按钮区的组合。",
-          "毛玻璃与半透明背景都支持颜色和透明度控制，按钮与背景不再共用单一视觉参数。"
+          "可放头像、昵称、简介和标签。",
+          "适合放在首页开头做身份区。",
+          "会让这一页更像你的地方。"
         ]
       },
       {
-        section: "Rhythm",
-        title: "日期时间、倒计时、打卡让首页有节律，而不是只看静态内容",
+        section: "动作",
+        title: "功能按钮",
         description:
-          "这一组模块把时钟、事件期限和连续记录带进首页。它们不负责承载大内容，但负责给整个工作面提供节拍感。",
-        chips: ["时间默认显示秒", "经典倒计时", "打卡默认目标 25 天"],
+          "把常用动作留在手边。",
+        chips: ["纵向 / 横向 / 图标", "贴近头像区", "按钮外观可调"],
         summary:
-          "这类组件的价值不在复杂，而在首页层面的即时反馈。你打开主页就能看到时间、目标剩余和连击状态，不用跳转。",
+          "点一下就走，不绕路。",
         list: [
-          "`datetime` 支持时间、日期、引用和问候语组合，默认时间显示秒，适合你要求的精确时间呈现。",
-          "`countdown` 目前走经典倒计时模式，可以作为主页上最醒目的单目标提醒。",
-          "`checkin` 负责连续打卡、目标天数和字段统计，默认目标天数是 25 天，已经能形成节律型首页模块。",
-          "这些组件都属于轻内容高频查看型，适合搭在主浏览区旁边做节奏层。"
+          "支持纵向列表、横向列表、纵向图标。",
+          "能贴着头像区，也能独立成一块。",
+          "颜色、透明度和背景可分别调整。"
         ]
       },
       {
-        section: "Content",
-        title: "嵌入、便签、图片负责承载内容，而不是重复浏览组件",
+        section: "入口",
+        title: "搜索",
         description:
-          "如果说浏览组件负责发现内容，这三类组件更像是把内容固定在首页上。它们让首页既能检索，也能保留当前上下文。",
-        chips: ["Markdown / Leaf 嵌入", "便签样式可切换", "图片可作媒体背景"],
+          "从首页回到文件最快的入口。",
+        chips: ["前 8 条推荐", "最近文件", "安静或展开都可以"],
         summary:
-          "这部分不是简单堆信息，而是给首页保留一块‘正在用’的内容面。它们通常不做大规模筛选，而是强调停留与承载。",
+          "短、快、够用。",
         list: [
-          "`embed` 支持 Markdown 模式和 Leaf 模式，既可以直接嵌笔记内容，也可以挂接现有视图叶子。",
-          "`sticky` 组件提供写实与几何风格、不同便签配色、图钉与形状选项，适合首页上保留短提醒。",
-          "`img` 模块负责图片或媒体承载，也能与首页背景体系配合，补足视觉与内容氛围。",
-          "这三类组件共同解决的是首页的在场感，而不是单纯‘看完就走’的列表化体验。"
+          "聚焦时默认只显示前 8 条推荐。",
+          "可展示最近文件，也可只留输入框。",
+          "适合做整张首页的总入口。"
         ]
       },
       {
-        section: "Composition",
-        title: "Profile 与 HomePage Core 负责把组件变成真正的首页系统",
+        section: "回流",
+        title: "浏览",
         description:
-          "主页并不是单个组件拼贴。真正把它们组织起来的是核心层：拖拽、缩放、叠层、保存、背景和组件注册，外加个人主面板承担身份区。",
-        chips: ["画布缩放", "拖拽与自动保存", "组件注册中心"],
+          "把重点、日记和文件重新捞出来。",
+        chips: ["4 种内容入口", "颜色可筛", "时间精确到秒"],
         summary:
-          "这一层决定了首页有没有‘系统性’。没有它，就只是一堆零散卡片；有了它，多个组件才会变成一个可长期维护的首页工程。",
+          "最像首页回流区的一块。",
         list: [
-          "`profile` 提供头像、昵称、简介、标签和统计信息，承担首页的身份头部与信息汇总区。",
-          "`HomePage-core.md` 已经把 10 个组件模块统一注册，新增组件只需要走相同接入点，不必重写整个页面骨架。",
-          "首页核心支持画布缩放、拖拽、缩放、层级调整、预览、保存与背景效果控制，说明这个项目早已超出静态组件集合。",
-          "你后面继续扩展时，应该优先在共享层和注册层上加能力，而不是让每个组件单独长成一套系统。"
+          "支持标记、笔记、媒体和其他文件。",
+          "颜色标记可以筛选，时间可显示到秒。",
+          "日记会识别日期文件名和时间条目。"
+        ]
+      },
+      {
+        section: "留驻",
+        title: "嵌入",
+        description:
+          "把正在看的内容直接留在桌面。",
+        chips: ["Markdown", "Leaf 视图", "适合做常驻区"],
+        summary:
+          "少一次跳转。",
+        list: [
+          "支持 Markdown 内容直接嵌入。",
+          "也能挂接现有 Leaf 视图。",
+          "适合放常看的页面或正在写的内容。"
+        ]
+      },
+      {
+        section: "留驻",
+        title: "便签",
+        description:
+          "留一句提醒就够了。",
+        chips: ["写实或几何", "颜色可换", "适合短提醒"],
+        summary:
+          "轻，但一直在场。",
+        list: [
+          "适合一句提醒或当天重点。",
+          "样式、配色、图钉和形状都能换。",
+          "很适合留住临时想法。"
+        ]
+      },
+      {
+        section: "氛围",
+        title: "图片",
+        description:
+          "负责第一眼的温度和层次。",
+        chips: ["做视觉焦点", "也能做陪衬", "适合拉开层次"],
+        summary:
+          "决定页面有没有停留感。",
+        list: [
+          "可做主视觉，也可做氛围陪衬。",
+          "能和背景或其他卡片一起配合。",
+          "适合拉开页面的视觉层次。"
+        ]
+      },
+      {
+        section: "节奏",
+        title: "时间",
+        description:
+          "让这页始终活着。",
+        chips: ["默认显示秒", "日期与问候", "适合做节拍"],
+        summary:
+          "一打开就知道现在。",
+        list: [
+          "默认显示秒，也能搭日期与问候。",
+          "适合放在页面最容易扫到的位置。",
+          "会给整张首页带来节拍感。"
+        ]
+      },
+      {
+        section: "节奏",
+        title: "倒计时",
+        description:
+          "把最重要的期限挂在眼前。",
+        chips: ["经典模式", "适合单目标", "提醒感很强"],
+        summary:
+          "只盯一件大事。",
+        list: [
+          "适合考试、项目或纪念日提醒。",
+          "经典模式简单直接。",
+          "最适合突出单一目标。"
+        ]
+      },
+      {
+        section: "节奏",
+        title: "打卡",
+        description:
+          "把坚持这件事变得可见。",
+        chips: ["默认 25 天目标", "连续记录", "适合习惯养成"],
+        summary:
+          "今天做没做，一眼就知道。",
+        list: [
+          "适合阅读、训练、写作等习惯。",
+          "会保留目标天数与连续记录。",
+          "默认目标天数为 25 天。"
         ]
       }
     ];
@@ -921,13 +999,13 @@
         </div>
         <div class="card-grid">
           <section class="card-list">
-            <h5>能力重点</h5>
+            <h5>它会做什么</h5>
             <ul class="capability-list">
               ${card.list.map((item) => `<li>${item}</li>`).join("")}
             </ul>
           </section>
           <aside class="card-meta-box">
-            <h5>模块侧记</h5>
+            <h5>先感受到的</h5>
             <div class="meta-chips">
               ${card.chips.map((chip) => `<span class="meta-chip">${chip}</span>`).join("")}
             </div>
