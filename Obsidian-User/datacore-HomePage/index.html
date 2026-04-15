@@ -3,204 +3,1043 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>datacore-HomePage</title>
-  <meta name="description" content="datacore-HomePage 介绍页" />
+  <title>datacore-HomePage | Obsidian-User</title>
+  <meta
+    name="description"
+    content="datacore-HomePage 组件介绍页，围绕真实模块与首页组织能力进行展示。"
+  />
   <style>
     :root {
-      --panel: rgba(15, 23, 42, 0.72);
-      --panel-border: rgba(148, 163, 184, 0.16);
-      --text-main: #f8fafc;
-      --text-sub: rgba(226, 232, 240, 0.72);
-      --text-soft: rgba(226, 232, 240, 0.48);
-      --shadow: 0 24px 64px rgba(2, 6, 23, 0.32);
+      color-scheme: dark;
+      --bg: #0a0d12;
+      --bg-soft: #121720;
+      --surface: rgba(18, 24, 33, 0.78);
+      --surface-strong: rgba(23, 31, 42, 0.94);
+      --surface-faint: rgba(28, 36, 48, 0.54);
+      --line: rgba(231, 224, 203, 0.14);
+      --line-strong: rgba(231, 224, 203, 0.28);
+      --text-main: #f3ecdc;
+      --text-sub: rgba(243, 236, 220, 0.76);
+      --text-soft: rgba(243, 236, 220, 0.52);
+      --accent: #d2b67c;
+      --accent-soft: rgba(210, 182, 124, 0.18);
+      --shadow: 0 36px 90px rgba(0, 0, 0, 0.42);
+      --radius-xl: 30px;
+      --radius-lg: 22px;
+      --radius-md: 16px;
+      --transition: 320ms cubic-bezier(0.2, 0.8, 0.2, 1);
+      --page-width: min(1180px, calc(100vw - 48px));
     }
 
-    * { box-sizing: border-box; }
+    * {
+      box-sizing: border-box;
+    }
 
-    html, body {
+    html,
+    body {
       margin: 0;
       min-height: 100%;
-      font-family: "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
-      color: var(--text-main);
       background:
-        radial-gradient(circle at top left, rgba(52, 211, 153, 0.12), transparent 26%),
-        radial-gradient(circle at top right, rgba(96, 165, 250, 0.14), transparent 30%),
-        linear-gradient(180deg, #0f172a 0%, #0b1220 100%);
+        radial-gradient(circle at top, rgba(210, 182, 124, 0.14), transparent 30%),
+        radial-gradient(circle at 15% 20%, rgba(135, 156, 188, 0.12), transparent 24%),
+        linear-gradient(180deg, #0a0d12 0%, #0d1219 44%, #090c10 100%);
+      color: var(--text-main);
+      font-family: "Noto Serif SC", "Source Han Serif SC", "Microsoft YaHei", serif;
     }
 
-    a { color: inherit; text-decoration: none; }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
 
-    .wrap {
-      width: min(100%, 1080px);
+    button,
+    input {
+      font: inherit;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+      background-size: 28px 28px;
+      mask-image: radial-gradient(circle at center, black 40%, transparent 85%);
+      pointer-events: none;
+      opacity: 0.2;
+    }
+
+    .page {
+      width: var(--page-width);
       margin: 0 auto;
-      padding: 56px 24px 88px;
+      padding: 48px 0 72px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 40px;
+      padding: 0 6px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .brand-badge {
+      width: 52px;
+      height: 52px;
+      border-radius: 16px;
+      display: grid;
+      place-items: center;
+      background:
+        linear-gradient(145deg, rgba(243, 236, 220, 0.12), rgba(243, 236, 220, 0.04)),
+        rgba(18, 24, 33, 0.8);
+      border: 1px solid var(--line);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    .brand-copy h1 {
+      margin: 0;
+      font-size: clamp(28px, 4.6vw, 44px);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+    }
+
+    .brand-copy p {
+      margin: 6px 0 0;
+      color: var(--text-sub);
+      font-size: 14px;
+      letter-spacing: 0.02em;
+    }
+
+    .topbar-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .ghost-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 42px;
+      padding: 0 18px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(16, 22, 30, 0.72);
+      color: var(--text-sub);
+      transition: transform var(--transition), border-color var(--transition), background var(--transition);
+      backdrop-filter: blur(12px);
+    }
+
+    .ghost-link:hover {
+      transform: translateY(-1px);
+      border-color: var(--line-strong);
+      background: rgba(22, 30, 40, 0.92);
+      color: var(--text-main);
     }
 
     .hero {
       display: grid;
-      grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
-      gap: 24px;
+      grid-template-columns: minmax(0, 1.1fr) minmax(280px, 0.75fr);
+      gap: 26px;
       align-items: stretch;
+      margin-bottom: 28px;
     }
 
-    .hero-main,
-    .hero-side,
-    .panel,
-    .footer-card {
-      border-radius: 28px;
-      background: var(--panel);
-      border: 1px solid var(--panel-border);
-      backdrop-filter: blur(14px);
+    .hero-panel,
+    .metric-panel {
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--line);
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.025), transparent 22%),
+        var(--surface);
       box-shadow: var(--shadow);
+      backdrop-filter: blur(18px);
     }
 
-    .hero-main { padding: 34px 32px; }
-    .hero-side { padding: 26px 24px; display: flex; flex-direction: column; gap: 14px; justify-content: center; }
+    .hero-panel {
+      padding: 34px 32px;
+    }
 
     .eyebrow {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      min-height: 30px;
-      padding: 0 12px;
+      padding: 7px 12px;
+      margin-bottom: 18px;
       border-radius: 999px;
-      background: rgba(96, 165, 250, 0.14);
-      color: #bfdbfe;
+      border: 1px solid var(--line);
+      background: var(--accent-soft);
+      color: var(--accent);
       font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.16em;
       text-transform: uppercase;
     }
 
-    .hero-title {
-      margin: 20px 0 12px;
-      font-size: clamp(34px, 5vw, 56px);
-      line-height: 1;
-      letter-spacing: -0.05em;
+    .hero-panel h2 {
+      margin: 0;
+      font-size: clamp(30px, 4vw, 52px);
+      line-height: 1.04;
+      letter-spacing: -0.035em;
     }
 
-    .hero-desc,
-    .stat-desc,
-    .panel-text,
-    .panel-list,
-    .footer-card p {
+    .hero-panel p {
+      margin: 18px 0 0;
       color: var(--text-sub);
+      font-size: 16px;
+      line-height: 1.86;
+      max-width: 62ch;
+    }
+
+    .hero-notes {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 24px;
+    }
+
+    .hero-note {
+      padding: 10px 14px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(243, 236, 220, 0.04);
+      color: var(--text-sub);
+      font-size: 13px;
+    }
+
+    .metric-panel {
+      padding: 26px 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .metric-head {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .metric-head h3,
+    .carousel-head h3 {
+      margin: 0;
+      font-size: 15px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-soft);
+      font-weight: 600;
+    }
+
+    .metric-head span {
+      color: var(--accent);
+      font-size: 13px;
+      letter-spacing: 0.08em;
+    }
+
+    .metrics {
+      display: grid;
+      gap: 14px;
+    }
+
+    .metric-item {
+      display: grid;
+      grid-template-columns: 78px minmax(0, 1fr);
+      gap: 12px;
+      align-items: start;
+      padding: 14px 0;
+      border-top: 1px solid rgba(243, 236, 220, 0.08);
+    }
+
+    .metric-item:first-child {
+      border-top: 0;
+      padding-top: 0;
+    }
+
+    .metric-value {
+      font-size: 34px;
+      line-height: 1;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    .metric-copy strong {
+      display: block;
+      font-size: 16px;
+      margin-bottom: 4px;
+    }
+
+    .metric-copy p {
+      margin: 0;
+      color: var(--text-sub);
+      font-size: 13px;
+      line-height: 1.7;
+    }
+
+    .carousel-shell {
+      margin-top: 34px;
+      padding: 26px;
+      border-radius: calc(var(--radius-xl) + 6px);
+      border: 1px solid var(--line);
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.018), transparent 22%),
+        rgba(10, 14, 20, 0.84);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .carousel-head {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 18px;
+      margin-bottom: 22px;
+    }
+
+    .carousel-title strong {
+      display: block;
+      margin-top: 8px;
+      font-size: clamp(26px, 3.6vw, 38px);
+      letter-spacing: -0.03em;
+    }
+
+    .carousel-title p {
+      margin: 10px 0 0;
+      color: var(--text-sub);
+      font-size: 15px;
+      line-height: 1.8;
+      max-width: 58ch;
+    }
+
+    .carousel-meta {
+      color: var(--text-soft);
+      font-size: 13px;
+      white-space: nowrap;
+    }
+
+    .deck {
+      position: relative;
+      height: 560px;
+      margin-top: 8px;
+      isolation: isolate;
+    }
+
+    .deck-card {
+      position: absolute;
+      inset: 0;
+      width: min(100%, 760px);
+      height: 100%;
+      margin: 0 auto;
+      padding: 30px 30px 28px;
+      border-radius: 28px;
+      border: 1px solid rgba(243, 236, 220, 0.12);
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.03), transparent 24%),
+        var(--surface-strong);
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.05),
+        0 24px 70px rgba(0, 0, 0, 0.36);
+      transition:
+        transform var(--transition),
+        opacity var(--transition),
+        filter var(--transition),
+        box-shadow var(--transition);
+      will-change: transform, opacity;
+      cursor: default;
+      overflow: hidden;
+    }
+
+    .deck-card::after {
+      content: "";
+      position: absolute;
+      inset: auto 28px 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(243, 236, 220, 0.16), transparent);
+    }
+
+    .deck-card.is-active {
+      z-index: 4;
+      opacity: 1;
+      transform: translateX(0) scale(1);
+      filter: blur(0);
+      pointer-events: auto;
+    }
+
+    .deck-card.is-prev,
+    .deck-card.is-next {
+      z-index: 3;
+      opacity: 0.78;
+      pointer-events: auto;
+      cursor: pointer;
+    }
+
+    .deck-card.is-prev {
+      transform: translateX(-39%) scale(0.9);
+    }
+
+    .deck-card.is-next {
+      transform: translateX(39%) scale(0.9);
+    }
+
+    .deck-card.is-prev::before,
+    .deck-card.is-next::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(5, 8, 12, 0.12), rgba(5, 8, 12, 0.38));
+      pointer-events: none;
+    }
+
+    .deck-card.is-far {
+      z-index: 2;
+      opacity: 0.28;
+      transform: translateX(0) scale(0.82);
+      filter: blur(1px);
+      pointer-events: none;
+    }
+
+    .card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 18px;
+      margin-bottom: 20px;
+    }
+
+    .card-section {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(243, 236, 220, 0.04);
+      color: var(--accent);
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .card-index {
+      color: var(--text-soft);
+      font-size: 13px;
+      white-space: nowrap;
+      padding-top: 8px;
+    }
+
+    .card-main h4 {
+      margin: 0;
+      font-size: clamp(26px, 3.4vw, 38px);
+      letter-spacing: -0.035em;
+      line-height: 1.08;
+    }
+
+    .card-main p {
+      margin: 14px 0 0;
+      color: var(--text-sub);
+      font-size: 16px;
+      line-height: 1.82;
+      max-width: 54ch;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(250px, 0.8fr);
+      gap: 22px;
+      margin-top: 24px;
+      align-items: start;
+    }
+
+    .card-list,
+    .card-meta-box {
+      border-radius: 22px;
+      border: 1px solid rgba(243, 236, 220, 0.1);
+      background: rgba(243, 236, 220, 0.035);
+      padding: 20px 20px 18px;
+      min-height: 100%;
+    }
+
+    .card-list h5,
+    .card-meta-box h5 {
+      margin: 0 0 14px;
+      font-size: 14px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-soft);
+      font-weight: 600;
+    }
+
+    .capability-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 12px;
+    }
+
+    .capability-list li {
+      position: relative;
+      padding-left: 18px;
+      color: var(--text-sub);
+      line-height: 1.72;
+      font-size: 15px;
+    }
+
+    .capability-list li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 10px;
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 0 6px rgba(210, 182, 124, 0.08);
+    }
+
+    .meta-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+
+    .meta-chip {
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(210, 182, 124, 0.08);
+      border: 1px solid rgba(210, 182, 124, 0.16);
+      color: var(--text-main);
+      font-size: 13px;
+      line-height: 1.4;
+    }
+
+    .meta-summary {
+      margin: 0;
+      color: var(--text-sub);
+      font-size: 14px;
       line-height: 1.8;
     }
 
-    .hero-desc { margin: 0; max-width: 720px; font-size: 16px; }
-    .stat-label { color: var(--text-soft); font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; }
-    .stat-value { font-size: 24px; font-weight: 800; line-height: 1.2; }
-    .stat-desc, .panel-text, .panel-list, .footer-card p { font-size: 14px; }
-    .panel-list { margin: 0; padding-left: 18px; }
-
-    .hero-actions {
+    .deck-controls {
       display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 28px;
-    }
-
-    .button {
-      display: inline-flex;
       align-items: center;
-      justify-content: center;
-      min-height: 46px;
-      padding: 0 18px;
-      border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.18);
-      background: rgba(15, 23, 42, 0.35);
-      color: var(--text-sub);
-      transition: transform 0.18s ease, background 0.18s ease, border-color 0.18s ease;
-    }
-
-    .button:hover {
-      transform: translateY(-1px);
-      background: rgba(30, 41, 59, 0.88);
-      border-color: rgba(148, 163, 184, 0.32);
-    }
-
-    .button.primary {
-      background: linear-gradient(135deg, rgba(59, 130, 246, 0.22), rgba(52, 211, 153, 0.18));
-      color: #eff6ff;
-      border-color: rgba(96, 165, 250, 0.28);
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 18px;
+      justify-content: space-between;
+      gap: 14px;
       margin-top: 22px;
     }
 
-    .panel { padding: 24px 22px; }
-    .panel-title { margin: 0 0 12px; font-size: 20px; line-height: 1.2; }
-    .footer-card { margin-top: 22px; padding: 28px 26px; background: linear-gradient(135deg, rgba(59, 130, 246, 0.14), rgba(52, 211, 153, 0.1)); }
-    .footer-card h2 { margin: 0 0 12px; font-size: 26px; line-height: 1.1; }
-
-    @media (max-width: 900px) {
-      .hero, .grid { grid-template-columns: 1fr; }
+    .deck-buttons {
+      display: flex;
+      align-items: center;
+      gap: 10px;
     }
 
-    @media (max-width: 640px) {
-      .wrap { padding: 36px 18px 56px; }
-      .hero-main, .hero-side, .panel, .footer-card { border-radius: 22px; padding: 18px; }
+    .deck-button {
+      width: 46px;
+      height: 46px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(243, 236, 220, 0.04);
+      color: var(--text-main);
+      cursor: pointer;
+      transition: transform var(--transition), border-color var(--transition), background var(--transition);
+    }
+
+    .deck-button:hover {
+      transform: translateY(-1px);
+      border-color: var(--line-strong);
+      background: rgba(243, 236, 220, 0.08);
+    }
+
+    .deck-button:disabled {
+      cursor: default;
+      opacity: 0.45;
+      transform: none;
+    }
+
+    .deck-progress {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .deck-dot {
+      width: 36px;
+      height: 8px;
+      border: 0;
+      padding: 0;
+      border-radius: 999px;
+      background: rgba(243, 236, 220, 0.12);
+      cursor: pointer;
+      transition: width var(--transition), background var(--transition), transform var(--transition);
+    }
+
+    .deck-dot.is-active {
+      width: 62px;
+      background: linear-gradient(90deg, var(--accent), #f0dec0);
+      transform: translateY(-1px);
+    }
+
+    .deck-hint {
+      margin-top: 12px;
+      color: var(--text-soft);
+      font-size: 13px;
+      text-align: right;
+    }
+
+    .footer {
+      margin-top: 26px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 14px;
+      padding: 0 4px;
+      color: var(--text-soft);
+      font-size: 13px;
+      line-height: 1.8;
+    }
+
+    @media (max-width: 960px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+
+      .deck {
+        height: 620px;
+      }
+
+      .deck-card {
+        width: min(100%, 680px);
+      }
+
+      .deck-card.is-prev {
+        transform: translateX(-29%) scale(0.9);
+      }
+
+      .deck-card.is-next {
+        transform: translateX(29%) scale(0.9);
+      }
+
+      .card-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .page {
+        width: min(100vw - 24px, 100%);
+        padding: 22px 0 42px;
+      }
+
+      .topbar {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .topbar-actions {
+        justify-content: flex-start;
+      }
+
+      .hero-panel,
+      .metric-panel,
+      .carousel-shell {
+        border-radius: 24px;
+      }
+
+      .hero-panel {
+        padding: 24px 20px;
+      }
+
+      .metric-panel {
+        padding: 22px 20px;
+      }
+
+      .carousel-shell {
+        padding: 18px 14px 20px;
+      }
+
+      .carousel-head {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .deck {
+        height: 700px;
+      }
+
+      .deck-card {
+        padding: 20px 18px 18px;
+        width: 100%;
+      }
+
+      .deck-card.is-prev,
+      .deck-card.is-next {
+        opacity: 0.34;
+        transform: translateX(0) scale(0.92);
+      }
+
+      .card-main p {
+        font-size: 15px;
+      }
+
+      .deck-controls {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .deck-progress,
+      .deck-hint {
+        justify-content: flex-start;
+        text-align: left;
+      }
     }
   </style>
 </head>
 <body>
-  <main class="wrap">
-    <section class="hero">
-      <div class="hero-main">
-        <div class="eyebrow">Datacore HomePage</div>
-        <h1 class="hero-title">把 Obsidian 首页做成真正可用的工作台</h1>
-        <p class="hero-desc">
-          datacore-HomePage 是围绕 Obsidian Datacore 构建的主页式展示页面。它不只是把数据列出来，而是把常用信息、入口、卡片和内容组织成一个可浏览、可点击、可长期维护的主页系统。
-        </p>
-        <div class="hero-actions">
-          <a class="button primary" href="/Obsidian-User/" aria-label="返回 Obsidian-User 入口页">返回入口页</a>
-          <a class="button" href="/2026/04/16/Obsidian-User/" aria-label="打开 Obsidian User Markdown 页面">打开 Markdown 页</a>
+  <main class="page">
+    <header class="topbar">
+      <div class="brand">
+        <div class="brand-badge">DC</div>
+        <div class="brand-copy">
+          <h1>datacore-HomePage</h1>
+          <p>围绕真实组件组织的首页系统，而不是单个静态面板。</p>
         </div>
       </div>
-      <aside class="hero-side">
-        <div class="stat-label">定位</div>
-        <div class="stat-value">Datacore 驱动的主页页面</div>
-        <div class="stat-desc">面向个人主页、知识导航、项目入口和内容聚合场景。</div>
-        <div class="stat-label">关键词</div>
-        <div class="stat-value">主页 / 卡片 / 数据聚合</div>
-        <div class="stat-desc">通过 HTML 页面与 Markdown 页面一起发布，既可展示，也方便继续写作与维护。</div>
+      <div class="topbar-actions">
+        <a class="ghost-link" href="/Obsidian-User/">返回入口页</a>
+        <a class="ghost-link" href="/2026/04/16/Obsidian-User/">打开 Markdown 页</a>
+      </div>
+    </header>
+
+    <section class="hero">
+      <article class="hero-panel">
+        <div class="eyebrow">Component System</div>
+        <h2>它不是一块首页皮肤，而是一套可以拖拽、筛选、嵌入、组合的 Datacore 工作面。</h2>
+        <p>
+          `datacore-home` 现在已经形成了以浏览、搜索、动作入口、时间节律、内容承载、个人面板为主轴的首页系统。
+          重点不在“把信息摆上去”，而在于让首页具备检索、切换、筛选、排序与继续打开笔记的能力。
+        </p>
+        <div class="hero-notes">
+          <span class="hero-note">真实模块来自 `HomePage-core.md`</span>
+          <span class="hero-note">支持画布排布、缩放、自动保存</span>
+          <span class="hero-note">组件之间不是孤立展示</span>
+        </div>
+      </article>
+
+      <aside class="metric-panel">
+        <div class="metric-head">
+          <h3>Quick Read</h3>
+          <span>Live Modules</span>
+        </div>
+        <div class="metrics">
+          <div class="metric-item">
+            <div class="metric-value">10</div>
+            <div class="metric-copy">
+              <strong>核心组件</strong>
+              <p>`img`、`sticky`、`search`、`browser`、`actions`、`embed`、`datetime`、`countdown`、`checkin`、`profile` 全部已经接入首页核心。</p>
+            </div>
+          </div>
+          <div class="metric-item">
+            <div class="metric-value">4</div>
+            <div class="metric-copy">
+              <strong>浏览源类型</strong>
+              <p>`marks / notes / media / other` 四类源统一挂在浏览组件下，按不同模式展示与排序。</p>
+            </div>
+          </div>
+          <div class="metric-item">
+            <div class="metric-value">8</div>
+            <div class="metric-copy">
+              <strong>搜索推荐数</strong>
+              <p>搜索栏默认只展示前 8 项推荐，保持与按钮显示数量一致，避免下拉推荐过多造成卡顿。</p>
+            </div>
+          </div>
+        </div>
       </aside>
     </section>
 
-    <section class="grid">
-      <article class="panel">
-        <h2 class="panel-title">它解决什么问题</h2>
-        <p class="panel-text">
-          普通笔记首页往往只有静态链接，datacore-HomePage 更适合做成“项目门面”：让访问者先看到统一介绍，再继续进入具体页面、文章或说明文档。
-        </p>
-      </article>
-      <article class="panel">
-        <h2 class="panel-title">它适合放什么</h2>
-        <ul class="panel-list">
-          <li>插件主页与功能总览</li>
-          <li>知识库项目入口与导航页</li>
-          <li>作品列表与版本说明入口</li>
-        </ul>
-      </article>
-      <article class="panel">
-        <h2 class="panel-title">当前这套发布方式</h2>
-        <p class="panel-text">
-          入口页负责第一屏展示，介绍页负责完整说明，Markdown 页面负责把内容纳入 Hexo 正常页面流，三者职责分离，后续维护更轻。
-        </p>
-      </article>
+    <section class="carousel-shell" aria-labelledby="deck-title">
+      <div class="carousel-head">
+        <div class="carousel-title">
+          <h3 id="deck-title">Module Guide</h3>
+          <strong>按组件簇轮询查看，而不是一次性把所有说明摊开。</strong>
+          <p>中间是当前主卡，左右半露的是前后卡。你可以点左右卡切换，也可以用按钮或下方进度条跳转。</p>
+        </div>
+        <div class="carousel-meta">自动轮换 5.8 秒，悬停暂停</div>
+      </div>
+
+      <div class="deck" id="deck" aria-live="polite"></div>
+
+      <div class="deck-controls">
+        <div class="deck-buttons">
+          <button class="deck-button" id="prevButton" type="button" aria-label="上一张">←</button>
+          <button class="deck-button" id="nextButton" type="button" aria-label="下一张">→</button>
+        </div>
+        <div class="deck-progress" id="deckDots" aria-label="卡片导航"></div>
+      </div>
+      <div class="deck-hint">侧边露出的卡片本身也可点击切换。</div>
     </section>
 
-    <section class="footer-card">
-      <h2>为什么单独做一个 HomePage 介绍页</h2>
-      <p>
-        因为入口页只适合展示“是谁、去哪里”，不适合塞太多说明。把 datacore-HomePage 作为独立介绍页后，入口页仍然干净，点进去以后又能完整讲清楚产品定位、用途和结构，这样更像一个真正能被外部访问的项目主页。
-      </p>
-    </section>
+    <footer class="footer">
+      <div>页面内容依据 `datacore-home/scripts/HomePage-core.md` 与现有组件模块整理。</div>
+      <div>如果继续扩展组件，这里只需要补充卡片数据，不必重做页面结构。</div>
+    </footer>
   </main>
+
+  <script>
+    const cards = [
+      {
+        section: "Browser",
+        title: "浏览组件负责把零散内容变成可继续操作的卡片流",
+        description:
+          "它不只是列出文件，而是把高亮、段落、普通笔记、媒体与其它文件都收束进同一套浏览逻辑，再给你排序、筛选和路径时间信息。",
+        chips: ["4 类源类型", "支持路径 / 时间", "日记识别默认关闭"],
+        summary:
+          "浏览组件目前最像首页的检索中枢。你不是进入列表页才筛东西，而是在首页就能直接继续打开、快速查看、按规则抽取内容。",
+        list: [
+          "支持 `marks / notes / media / other` 四个源类型，每组可独立启用、排序、分页和控制卡片尺寸。",
+          "高亮抽取支持 `==`、自定义颜色规则、正则规则和 diary 规则；`diary` 默认不启用，但会识别 `YYYY-MM-DD` 文件名与行首时间。",
+          "日记条目如果带 `- 05:02` 或 `- 05:02:30` 前缀，会直接用文件日期加时间作为创建与修改排序依据。",
+          "卡片能显示路径和时间，时间侧已经支持显示秒，适合你现在强调的精确排序与追溯。"
+        ]
+      },
+      {
+        section: "Search + Actions",
+        title: "搜索入口与功能按钮负责把首页变成操作面板",
+        description:
+          "搜索组件解决的是‘怎么进’，功能按钮解决的是‘进来之后第一步做什么’。这两块在首页上承担的是动作入口，而不是展示装饰。",
+        chips: ["推荐上限 8", "横向 / 纵向 / 图标布局", "毛玻璃与半透明背景可调"],
+        summary:
+          "搜索与动作入口是一组组合拳。一个负责定位笔记与最近内容，一个负责常用命令、链接和主页动作的快速触发。",
+        list: [
+          "搜索栏聚焦时只显示前 8 项推荐，数量刚好贴合当前可见按钮，避免一展开就堆很多条导致性能下降。",
+          "支持输入框、最近文件列表、下拉式与独立显示切换，最近项数量与标题显示都能单独控制。",
+          "功能按钮已经拆出多种布局：纵向列表、横向列表、纵向图标，并继续兼容头像、昵称、简介和按钮区的组合。",
+          "毛玻璃与半透明背景都支持颜色和透明度控制，按钮与背景不再共用单一视觉参数。"
+        ]
+      },
+      {
+        section: "Rhythm",
+        title: "日期时间、倒计时、打卡让首页有节律，而不是只看静态内容",
+        description:
+          "这一组模块把时钟、事件期限和连续记录带进首页。它们不负责承载大内容，但负责给整个工作面提供节拍感。",
+        chips: ["时间默认显示秒", "经典倒计时", "打卡默认目标 25 天"],
+        summary:
+          "这类组件的价值不在复杂，而在首页层面的即时反馈。你打开主页就能看到时间、目标剩余和连击状态，不用跳转。",
+        list: [
+          "`datetime` 支持时间、日期、引用和问候语组合，默认时间显示秒，适合你要求的精确时间呈现。",
+          "`countdown` 目前走经典倒计时模式，可以作为主页上最醒目的单目标提醒。",
+          "`checkin` 负责连续打卡、目标天数和字段统计，默认目标天数是 25 天，已经能形成节律型首页模块。",
+          "这些组件都属于轻内容高频查看型，适合搭在主浏览区旁边做节奏层。"
+        ]
+      },
+      {
+        section: "Content",
+        title: "嵌入、便签、图片负责承载内容，而不是重复浏览组件",
+        description:
+          "如果说浏览组件负责发现内容，这三类组件更像是把内容固定在首页上。它们让首页既能检索，也能保留当前上下文。",
+        chips: ["Markdown / Leaf 嵌入", "便签样式可切换", "图片可作媒体背景"],
+        summary:
+          "这部分不是简单堆信息，而是给首页保留一块‘正在用’的内容面。它们通常不做大规模筛选，而是强调停留与承载。",
+        list: [
+          "`embed` 支持 Markdown 模式和 Leaf 模式，既可以直接嵌笔记内容，也可以挂接现有视图叶子。",
+          "`sticky` 组件提供写实与几何风格、不同便签配色、图钉与形状选项，适合首页上保留短提醒。",
+          "`img` 模块负责图片或媒体承载，也能与首页背景体系配合，补足视觉与内容氛围。",
+          "这三类组件共同解决的是首页的在场感，而不是单纯‘看完就走’的列表化体验。"
+        ]
+      },
+      {
+        section: "Composition",
+        title: "Profile 与 HomePage Core 负责把组件变成真正的首页系统",
+        description:
+          "主页并不是单个组件拼贴。真正把它们组织起来的是核心层：拖拽、缩放、叠层、保存、背景和组件注册，外加个人主面板承担身份区。",
+        chips: ["画布缩放", "拖拽与自动保存", "组件注册中心"],
+        summary:
+          "这一层决定了首页有没有‘系统性’。没有它，就只是一堆零散卡片；有了它，多个组件才会变成一个可长期维护的首页工程。",
+        list: [
+          "`profile` 提供头像、昵称、简介、标签和统计信息，承担首页的身份头部与信息汇总区。",
+          "`HomePage-core.md` 已经把 10 个组件模块统一注册，新增组件只需要走相同接入点，不必重写整个页面骨架。",
+          "首页核心支持画布缩放、拖拽、缩放、层级调整、预览、保存与背景效果控制，说明这个项目早已超出静态组件集合。",
+          "你后面继续扩展时，应该优先在共享层和注册层上加能力，而不是让每个组件单独长成一套系统。"
+        ]
+      }
+    ];
+
+    const deck = document.getElementById("deck");
+    const dots = document.getElementById("deckDots");
+    const prevButton = document.getElementById("prevButton");
+    const nextButton = document.getElementById("nextButton");
+    let activeIndex = 0;
+    let timer = null;
+    let isPaused = false;
+
+    function getRelativeState(index) {
+      const total = cards.length;
+      const delta = (index - activeIndex + total) % total;
+      if (delta === 0) return "active";
+      if (delta === 1) return "next";
+      if (delta === total - 1) return "prev";
+      return "far";
+    }
+
+    function createCardMarkup(card, index) {
+      const article = document.createElement("article");
+      article.className = "deck-card";
+      article.dataset.index = String(index);
+      article.innerHTML = `
+        <div class="card-top">
+          <span class="card-section">${card.section}</span>
+          <span class="card-index">${String(index + 1).padStart(2, "0")} / ${String(cards.length).padStart(2, "0")}</span>
+        </div>
+        <div class="card-main">
+          <h4>${card.title}</h4>
+          <p>${card.description}</p>
+        </div>
+        <div class="card-grid">
+          <section class="card-list">
+            <h5>能力重点</h5>
+            <ul class="capability-list">
+              ${card.list.map((item) => `<li>${item}</li>`).join("")}
+            </ul>
+          </section>
+          <aside class="card-meta-box">
+            <h5>模块侧记</h5>
+            <div class="meta-chips">
+              ${card.chips.map((chip) => `<span class="meta-chip">${chip}</span>`).join("")}
+            </div>
+            <p class="meta-summary">${card.summary}</p>
+          </aside>
+        </div>
+      `;
+      article.addEventListener("click", () => {
+        const targetIndex = Number(article.dataset.index || 0);
+        if (targetIndex !== activeIndex) {
+          activeIndex = targetIndex;
+          render();
+          restartAutoRotate();
+        }
+      });
+      article.addEventListener("mouseenter", pauseAutoRotate);
+      article.addEventListener("mouseleave", resumeAutoRotate);
+      article.addEventListener("focusin", pauseAutoRotate);
+      article.addEventListener("focusout", resumeAutoRotate);
+      return article;
+    }
+
+    function renderCards() {
+      deck.innerHTML = "";
+      cards.forEach((card, index) => {
+        const element = createCardMarkup(card, index);
+        deck.appendChild(element);
+      });
+    }
+
+    function renderDots() {
+      dots.innerHTML = "";
+      cards.forEach((card, index) => {
+        const button = document.createElement("button");
+        button.type = "button";
+        button.className = "deck-dot";
+        button.setAttribute("aria-label", `切换到 ${card.section}`);
+        button.addEventListener("click", () => {
+          activeIndex = index;
+          render();
+          restartAutoRotate();
+        });
+        dots.appendChild(button);
+      });
+    }
+
+    function render() {
+      Array.from(deck.children).forEach((node, index) => {
+        node.className = `deck-card is-${getRelativeState(index)}`;
+        const clickable = index !== activeIndex;
+        node.setAttribute("aria-hidden", clickable ? "true" : "false");
+        node.tabIndex = clickable ? -1 : 0;
+      });
+
+      Array.from(dots.children).forEach((node, index) => {
+        node.className = `deck-dot${index === activeIndex ? " is-active" : ""}`;
+        node.setAttribute("aria-pressed", index === activeIndex ? "true" : "false");
+      });
+    }
+
+    function showPrev() {
+      activeIndex = (activeIndex - 1 + cards.length) % cards.length;
+      render();
+      restartAutoRotate();
+    }
+
+    function showNext() {
+      activeIndex = (activeIndex + 1) % cards.length;
+      render();
+      restartAutoRotate();
+    }
+
+    function pauseAutoRotate() {
+      isPaused = true;
+      window.clearInterval(timer);
+      timer = null;
+    }
+
+    function resumeAutoRotate() {
+      if (!isPaused) return;
+      isPaused = false;
+      startAutoRotate();
+    }
+
+    function startAutoRotate() {
+      if (timer) return;
+      timer = window.setInterval(() => {
+        if (!isPaused) {
+          activeIndex = (activeIndex + 1) % cards.length;
+          render();
+        }
+      }, 5800);
+    }
+
+    function restartAutoRotate() {
+      window.clearInterval(timer);
+      timer = null;
+      isPaused = false;
+      startAutoRotate();
+    }
+
+    prevButton.addEventListener("click", showPrev);
+    nextButton.addEventListener("click", showNext);
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "ArrowLeft") {
+        showPrev();
+      } else if (event.key === "ArrowRight") {
+        showNext();
+      }
+    });
+
+    deck.addEventListener("mouseenter", pauseAutoRotate);
+    deck.addEventListener("mouseleave", resumeAutoRotate);
+
+    renderCards();
+    renderDots();
+    render();
+    startAutoRotate();
+  </script>
 </body>
 </html>
