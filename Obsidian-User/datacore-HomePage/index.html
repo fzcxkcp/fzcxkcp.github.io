@@ -692,8 +692,15 @@
 
       .deck-card.is-prev,
       .deck-card.is-next {
-        opacity: 0.34;
-        transform: translateX(0) scale(0.92);
+        opacity: 0.52;
+      }
+
+      .deck-card.is-prev {
+        transform: translateX(-12%) scale(0.92);
+      }
+
+      .deck-card.is-next {
+        transform: translateX(12%) scale(0.92);
       }
 
       .card-main p {
@@ -969,10 +976,10 @@
 
     function render() {
       Array.from(deck.children).forEach((node, index) => {
-        node.className = `deck-card is-${getRelativeState(index)}`;
-        const clickable = index !== activeIndex;
-        node.setAttribute("aria-hidden", clickable ? "true" : "false");
-        node.tabIndex = clickable ? -1 : 0;
+        const state = getRelativeState(index);
+        node.className = `deck-card is-${state}`;
+        node.setAttribute("aria-hidden", state === "far" ? "true" : "false");
+        node.tabIndex = state === "active" ? 0 : -1;
       });
 
       Array.from(dots.children).forEach((node, index) => {
