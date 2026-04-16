@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="frontend-learning        :root {       --bg: #08111d;       --panel: rgba(12, 23, 38, 0.88);       --line: rgba(148, 163, 184, 0.18);       --text: #e5eefb;       --sub: #93a4ba;       --ac">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="https://fzcxkcp.github.io/frontend-learning/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="frontend-learning        :root {       --bg: #08111d;       --panel: rgba(12, 23, 38, 0.88);       --line: rgba(148, 163, 184, 0.18);       --text: #e5eefb;       --sub: #93a4ba;       --ac">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2026-04-16T15:57:30.801Z">
+<meta property="article:modified_time" content="2026-04-16T15:57:30.801Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css">
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://fzcxkcp.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="page-" class="h-entry article article-type-page" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/frontend-learning/index.html" class="article-date">
+  <time class="dt-published" datetime="2026-04-16T15:57:30.801Z" itemprop="datePublished">2026-04-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>frontend-learning</title>
+  <style>
+    :root {
+      --bg: #08111d;
+      --panel: rgba(12, 23, 38, 0.88);
+      --line: rgba(148, 163, 184, 0.18);
+      --text: #e5eefb;
+      --sub: #93a4ba;
+      --accent: #9ec5ff;
+      --accent-soft: rgba(158, 197, 255, 0.12);
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Segoe UI", "PingFang SC", sans-serif;
+      background:
+        radial-gradient(circle at top, rgba(96, 165, 250, 0.18), transparent 38%),
+        linear-gradient(180deg, #09111b 0%, #050b13 100%);
+      color: var(--text);
+    }
+
+    .page {
+      width: min(960px, calc(100vw - 28px));
+      margin: 0 auto;
+      padding: 36px 0 56px;
+    }
+
+    .hero,
+    .list {
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      background: var(--panel);
+      backdrop-filter: blur(18px);
+      box-shadow: 0 24px 56px rgba(0, 0, 0, 0.28);
+    }
+
+    .hero {
+      padding: 28px;
+      margin-bottom: 18px;
+    }
+
+    .hero h1 {
+      margin: 0 0 10px;
+      font-size: clamp(30px, 5vw, 44px);
+    }
+
+    .hero p {
+      margin: 0;
+      color: var(--sub);
+      line-height: 1.85;
+    }
+
+    .hero-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .hero-links a,
+    .item a {
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    .hero-links a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 42px;
+      padding: 0 16px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: var(--accent-soft);
+    }
+
+    .list {
+      padding: 14px;
+      display: grid;
+      gap: 12px;
+    }
+
+    .item {
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 18px;
+      background: rgba(148, 163, 184, 0.05);
+    }
+
+    .item strong {
+      display: block;
+      font-size: 18px;
+      margin-bottom: 8px;
+    }
+
+    .item p {
+      margin: 0 0 12px;
+      color: var(--sub);
+      line-height: 1.75;
+    }
+
+    .item a {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--accent);
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <section class="hero">
+      <h1>frontend-learning</h1>
+      <p>这里放的是给初学者看的独立示例。按最常见的学习类型来分，尽量经典、彼此不一样，每个文件都能单独打开直接改。</p>
+      <div class="hero-links">
+        <a href="/Obsidian-User/">返回入口页</a>
+        <a href="/Obsidian-User/datacore-HomePage/">返回 HomePage 介绍页</a>
+      </div>
+    </section>
+
+    <section class="list">
+      <article class="item">
+        <strong>基础头部与介绍区</strong>
+        <p>一个最基础的顶部导航加介绍区，适合先练排版和按钮结构。</p>
+        <a href="/frontend-learning/basic-layout.html">打开示例</a>
+      </article>
+
+      <article class="item">
+        <strong>信息统计面板</strong>
+        <p>把数字、标题和说明放成一组信息卡片，结构简单，改起来也直观。</p>
+        <a href="/frontend-learning/metric-panel.html">打开示例</a>
+      </article>
+
+      <article class="item">
+        <strong>卡片切换示例</strong>
+        <p>独立演示按钮切换卡片，移动端只保留当前卡片，用下方按钮切换。</p>
+        <a href="/frontend-learning/card-switcher.html">打开示例</a>
+      </article>
+
+      <article class="item">
+        <strong>HTML 结构页</strong>
+        <p>最基础的语义结构：头部、主内容、侧栏、底部。适合先熟悉 HTML 骨架。</p>
+        <a href="/frontend-learning/html-structure.html">打开示例</a>
+      </article>
+
+      <article class="item">
+        <strong>CSS 卡片栅格</strong>
+        <p>经典响应式卡片列表，练习圆角、阴影、按钮和自适应排版。</p>
+        <a href="/frontend-learning/css-card-grid.html">打开示例</a>
+      </article>
+
+      <article class="item">
+        <strong>JS 计数器</strong>
+        <p>最常见的按钮点击和数字更新，适合刚开始接触 DOM 事件。</p>
+        <a href="/frontend-learning/js-counter.html">打开示例</a>
+      </article>
+
+      <article class="item">
+        <strong>Tab 切换</strong>
+        <p>练习最经典的内容切换逻辑，适合入门按钮状态和内容显隐。</p>
+        <a href="/frontend-learning/tabs-switcher.html">打开示例</a>
+      </article>
+    </section>
+  </main>
+</body>
+</html>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://fzcxkcp.github.io/frontend-learning/index.html" data-id="cmo1nyiym000bjktuc3yhgqk6" data-title="" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/00%E7%B4%A2%E5%BC%95/">00索引</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/00%E7%B4%A2%E5%BC%95/Obsidian/">Obsidian</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/01%E7%AC%94%E8%AE%B0/">01笔记</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/01%E7%AC%94%E8%AE%B0/GithubPage/">GithubPage</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/09%E5%85%B6%E4%BB%96/">09其他</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2026/04/16/01note-GIthubPage-reference/">GithubPage Reference</a>
+          </li>
+        
+          <li>
+            <a href="/2026/04/16/00index-Obsidian-User/">Obsidian User</a>
+          </li>
+        
+          <li>
+            <a href="/2026/04/15/01note-GithubPage-reuse&rules/">GithubPage Reuse&amp;Rules</a>
+          </li>
+        
+          <li>
+            <a href="/2023/01/08/09other-hello-world/">Hello World</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/04/">April 2026</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/01/">January 2023</a></li></ul>
+    </div>
+  </div>
+
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2026 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

@@ -682,25 +682,33 @@
       }
 
       .deck {
-        height: 700px;
+        height: auto;
+        min-height: 0;
       }
 
       .deck-card {
+        position: relative;
+        inset: auto;
         padding: 20px 18px 18px;
         width: 100%;
+        height: auto;
+        margin: 0;
+        transition: opacity var(--transition);
+        will-change: auto;
+      }
+
+      .deck-card.is-active {
+        display: block;
+        transform: none;
+        filter: none;
       }
 
       .deck-card.is-prev,
-      .deck-card.is-next {
-        opacity: 0.52;
-      }
-
-      .deck-card.is-prev {
-        transform: translateX(-12%) scale(0.92);
-      }
-
-      .deck-card.is-next {
-        transform: translateX(12%) scale(0.92);
+      .deck-card.is-next,
+      .deck-card.is-far {
+        display: none;
+        opacity: 0;
+        pointer-events: none;
       }
 
       .card-main p {
@@ -967,9 +975,14 @@
     const dots = document.getElementById("deckDots");
     const prevButton = document.getElementById("prevButton");
     const nextButton = document.getElementById("nextButton");
+    const mobileCardModeQuery = window.matchMedia("(max-width: 720px)");
     let activeIndex = 0;
     let timer = null;
     let isPaused = false;
+
+    function isMobileCardMode() {
+      return mobileCardModeQuery.matches;
+    }
 
     function getRelativeState(index) {
       const total = cards.length;
@@ -1010,6 +1023,7 @@
         </div>
       `;
       article.addEventListener("click", () => {
+        if (isMobileCardMode()) return;
         const targetIndex = Number(article.dataset.index || 0);
         if (targetIndex !== activeIndex) {
           activeIndex = targetIndex;
@@ -1087,6 +1101,7 @@
     }
 
     function startAutoRotate() {
+      if (isMobileCardMode()) return;
       if (timer) return;
       timer = window.setInterval(() => {
         if (!isPaused) {
@@ -1103,6 +1118,12 @@
       startAutoRotate();
     }
 
+    function handleMobileCardModeChange() {
+      pauseAutoRotate();
+      restartAutoRotate();
+      render();
+    }
+
     prevButton.addEventListener("click", showPrev);
     nextButton.addEventListener("click", showNext);
 
@@ -1116,6 +1137,11 @@
 
     deck.addEventListener("mouseenter", pauseAutoRotate);
     deck.addEventListener("mouseleave", resumeAutoRotate);
+    if (typeof mobileCardModeQuery.addEventListener === "function") {
+      mobileCardModeQuery.addEventListener("change", handleMobileCardModeChange);
+    } else if (typeof mobileCardModeQuery.addListener === "function") {
+      mobileCardModeQuery.addListener(handleMobileCardModeChange);
+    }
 
     renderCards();
     renderDots();

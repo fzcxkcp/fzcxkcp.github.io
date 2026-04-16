@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Card Switcher Demo        :root {       --bg: #07111b;       --panel: rgba(10, 20, 34, 0.88);       --line: rgba(148, 163, 184, 0.18);       --text: #e8eef8;       --sub: #99a9bd;       --a">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="https://fzcxkcp.github.io/frontend-learning/card-switcher.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Card Switcher Demo        :root {       --bg: #07111b;       --panel: rgba(10, 20, 34, 0.88);       --line: rgba(148, 163, 184, 0.18);       --text: #e8eef8;       --sub: #99a9bd;       --a">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2026-04-16T15:57:30.803Z">
+<meta property="article:modified_time" content="2026-04-16T15:57:30.803Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css">
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://fzcxkcp.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="page-" class="h-entry article article-type-page" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/frontend-learning/card-switcher.html" class="article-date">
+  <time class="dt-published" datetime="2026-04-16T15:57:30.803Z" itemprop="datePublished">2026-04-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Card Switcher Demo</title>
+  <style>
+    :root {
+      --bg: #07111b;
+      --panel: rgba(10, 20, 34, 0.88);
+      --line: rgba(148, 163, 184, 0.18);
+      --text: #e8eef8;
+      --sub: #99a9bd;
+      --accent: #9ec5ff;
+      --transition: 240ms ease;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: "Segoe UI", "PingFang SC", sans-serif;
+      background: linear-gradient(180deg, #09111b 0%, #050b13 100%);
+      color: var(--text);
+    }
+
+    .page {
+      width: min(920px, calc(100vw - 28px));
+      margin: 0 auto;
+      padding: 32px 0 48px;
+    }
+
+    .shell {
+      border-radius: 26px;
+      border: 1px solid var(--line);
+      background: var(--panel);
+      padding: 20px;
+      box-shadow: 0 22px 56px rgba(0, 0, 0, 0.28);
+    }
+
+    .shell h1 {
+      margin: 0 0 16px;
+      font-size: 30px;
+    }
+
+    .deck {
+      position: relative;
+      height: 420px;
+      margin-bottom: 16px;
+    }
+
+    .card {
+      position: absolute;
+      inset: 0;
+      padding: 24px;
+      border-radius: 24px;
+      border: 1px solid rgba(148, 163, 184, 0.14);
+      background: rgba(148, 163, 184, 0.06);
+      transition: transform var(--transition), opacity var(--transition);
+    }
+
+    .card h2 {
+      margin: 0 0 10px;
+      font-size: 28px;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--sub);
+      line-height: 1.8;
+    }
+
+    .card.is-active {
+      z-index: 3;
+      opacity: 1;
+      transform: translateX(0) scale(1);
+    }
+
+    .card.is-prev,
+    .card.is-next {
+      z-index: 2;
+      opacity: 0.72;
+    }
+
+    .card.is-prev { transform: translateX(-32%) scale(0.92); }
+    .card.is-next { transform: translateX(32%) scale(0.92); }
+    .card.is-far { opacity: 0; pointer-events: none; }
+
+    .controls {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .buttons,
+    .dots {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    button {
+      font: inherit;
+    }
+
+    .nav-btn,
+    .dot {
+      border: 1px solid var(--line);
+      background: rgba(148, 163, 184, 0.08);
+      color: var(--text);
+      cursor: pointer;
+    }
+
+    .nav-btn {
+      min-width: 46px;
+      height: 46px;
+      border-radius: 999px;
+    }
+
+    .dot {
+      width: 34px;
+      height: 8px;
+      border-radius: 999px;
+    }
+
+    .dot.is-active {
+      width: 60px;
+      background: linear-gradient(90deg, #93c5fd, #dbeafe);
+    }
+
+    .back {
+      display: inline-flex;
+      margin-top: 18px;
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    @media (max-width: 720px) {
+      .deck {
+        height: auto;
+      }
+
+      .card {
+        position: relative;
+        display: none;
+        inset: auto;
+        transform: none;
+      }
+
+      .card.is-active {
+        display: block;
+      }
+
+      .card.is-prev,
+      .card.is-next,
+      .card.is-far {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <section class="shell">
+      <h1>卡片切换示例</h1>
+      <div class="deck" id="deck"></div>
+
+      <div class="controls">
+        <div class="buttons">
+          <button class="nav-btn" id="prevButton" type="button">←</button>
+          <button class="nav-btn" id="nextButton" type="button">→</button>
+        </div>
+        <div class="dots" id="dots"></div>
+      </div>
+
+      <a class="back" href="/frontend-learning/">返回源码页</a>
+    </section>
+  </main>
+
+  <script>
+    const cards = [
+      { title: "首页背景", description: "负责整页的气氛，适合先做整体视觉。" },
+      { title: "功能按钮", description: "把最常用的动作留在手边，减少跳转。" },
+      { title: "浏览组件", description: "把重点内容重新捞出来，做成回流区。" }
+    ];
+
+    const deck = document.getElementById("deck");
+    const dots = document.getElementById("dots");
+    const prevButton = document.getElementById("prevButton");
+    const nextButton = document.getElementById("nextButton");
+    let activeIndex = 0;
+
+    function getState(index) {
+      const total = cards.length;
+      const delta = (index - activeIndex + total) % total;
+      if (delta === 0) return "active";
+      if (delta === 1) return "next";
+      if (delta === total - 1) return "prev";
+      return "far";
+    }
+
+    function renderCards() {
+      deck.innerHTML = "";
+      cards.forEach((card, index) => {
+        const node = document.createElement("article");
+        node.className = "card";
+        node.innerHTML = "<h2>" + card.title + "</h2><p>" + card.description + "</p>";
+        node.addEventListener("click", function () {
+          if (window.matchMedia("(max-width: 720px)").matches) return;
+          activeIndex = index;
+          render();
+        });
+        deck.appendChild(node);
+      });
+    }
+
+    function renderDots() {
+      dots.innerHTML = "";
+      cards.forEach(function (_, index) {
+        const dot = document.createElement("button");
+        dot.type = "button";
+        dot.className = "dot";
+        dot.addEventListener("click", function () {
+          activeIndex = index;
+          render();
+        });
+        dots.appendChild(dot);
+      });
+    }
+
+    function render() {
+      Array.from(deck.children).forEach(function (node, index) {
+        node.className = "card is-" + getState(index);
+      });
+
+      Array.from(dots.children).forEach(function (node, index) {
+        node.className = "dot" + (index === activeIndex ? " is-active" : "");
+      });
+    }
+
+    prevButton.addEventListener("click", function () {
+      activeIndex = (activeIndex - 1 + cards.length) % cards.length;
+      render();
+    });
+
+    nextButton.addEventListener("click", function () {
+      activeIndex = (activeIndex + 1) % cards.length;
+      render();
+    });
+
+    renderCards();
+    renderDots();
+    render();
+  </script>
+</body>
+</html>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://fzcxkcp.github.io/frontend-learning/card-switcher.html" data-id="cmo1nyiyg0002jktugd5fao9j" data-title="" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/00%E7%B4%A2%E5%BC%95/">00索引</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/00%E7%B4%A2%E5%BC%95/Obsidian/">Obsidian</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/01%E7%AC%94%E8%AE%B0/">01笔记</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/01%E7%AC%94%E8%AE%B0/GithubPage/">GithubPage</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/09%E5%85%B6%E4%BB%96/">09其他</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2026/04/16/01note-GIthubPage-reference/">GithubPage Reference</a>
+          </li>
+        
+          <li>
+            <a href="/2026/04/16/00index-Obsidian-User/">Obsidian User</a>
+          </li>
+        
+          <li>
+            <a href="/2026/04/15/01note-GithubPage-reuse&rules/">GithubPage Reuse&amp;Rules</a>
+          </li>
+        
+          <li>
+            <a href="/2023/01/08/09other-hello-world/">Hello World</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/04/">April 2026</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/01/">January 2023</a></li></ul>
+    </div>
+  </div>
+
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2026 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
