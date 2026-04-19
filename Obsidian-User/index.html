@@ -22,6 +22,7 @@
       --mint: #e8f8ef;
       --shadow: 0 12px 32px rgba(30, 10, 60, 0.08);
       --shadow-strong: 0 24px 72px rgba(30, 10, 60, 0.12);
+      --anchor-offset: 88px;
     }
 
     * { box-sizing: border-box; }
@@ -382,6 +383,7 @@
     }
 
     .section { padding: 22px 0 10px; }
+    .section[id] { scroll-margin-top: var(--anchor-offset); }
 
     .section-head {
       display: flex;
@@ -544,6 +546,7 @@
     }
 
     @media (max-width: 560px) {
+      :root { --anchor-offset: 24px; }
       .header { position: static; }
       .header-inner {
         min-height: 64px;
